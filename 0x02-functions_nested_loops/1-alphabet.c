@@ -4,10 +4,10 @@ include "main.h"
 */
 void print_alphabet(void)
 {
-char letter;
-for (letter = 'a'; letter <= 'z'; letter++)
+	int i;
+       for (i = 97; i <= 122; i++)
 {
 _putchar(letter);
-_putchar('\n');
 }
+_putchar('\n');
 }
