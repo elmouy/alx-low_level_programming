@@ -8,17 +8,25 @@
  */
 int main(void)
 {
-	int i;
-	int sum = 0;
+        int i, sum = 0;
+        char str[12];
+        int len;
 
-	for (i = 0; i < 1024; i++)
-	{
-		if ((i % 3) == 0 || (i % 5) == 0)
-			sum += i;
-	}
+        for (i = 0; i < 1024; i++)
+        {
+                if ((i % 3) == 0 || (i % 5) == 0)
+                        sum += i;
+        }
 
-	_putchar('sum');
-	_putchar('\n');
+        sprintf(str, "%d", sum);  // Convert integer sum to character string
+        len = strlen(str);
 
-	return (0);
+        for (i = 0; i < len; i++)
+        {
+                putchar(str[i]);
+        }
+
+        putchar('\n');
+
+        return (0);
 }
