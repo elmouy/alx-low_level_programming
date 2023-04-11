@@ -9,23 +9,23 @@
  */
 int count_word(char *s)
 {
-	int i, j, k;
+	int a, b, c;
 
-	i = 0;
-	k = 0;
+	a = 0;
+	c = 0;
 
-	for (j = 0; s[j] != '\0'; j++)
+	for (b = 0; s[b] != '\0'; b++)
 	{
-		if (s[j] == ' ')
-			i = 0;
-		else if (i == 0)
+		if (s[b] == ' ')
+			a = 0;
+		else if (a == 0)
 		{
-			i = 1;
-			k++;
+			a = 1;
+			c++;
 		}
 	}
 
-	return (k);
+	return (c);
 }
 /**
  * **strtow - splits a string into words
@@ -36,11 +36,11 @@ int count_word(char *s)
  */
 char **strtow(char *str)
 {
-	char **p, *r;
-	int i, j = 0, m = 0, w, n = 0, s, e;
-
-	while (*(str + m))
-		m++;
+	char **p, *t;
+	int i, k = 0, j = 0, w, d = 0, m, f;
+i
+	while (*(str + j))
+		j++;
 	w = count_word(str);
 	if (w == 0)
 		return (NULL);
@@ -49,29 +49,30 @@ char **strtow(char *str)
 	if (p == NULL)
 		return (NULL);
 
-	for (i = 0; i <= m; i++)
+	for (i = 0; i <= j; i++)
 	{
 		if (str[i] == ' ' || str[i] == '\0')
 		{
-			if (n)
+			if (d)
 			{
-				e = i;
-				r = (char *) malloc(sizeof(char) * (e + 1));
-				if (r == NULL)
+				f = i;
+				t = (char *) malloc(sizeof(char) * (d + 1));
+				if (t == NULL)
 					return (NULL);
-				while (s < e)
-					*r++ = str[s++];
-				*r = '\0';
-				p[j] = r - n;
-				j++;
-				n = 0;
+				while (m < f)
+					*t++ = str[m++];
+				*t = '\0';
+				p[k] = t - d;
+				k++;
+				d = 0;
 			}
 		}
-		else if (n++ == 0)
-			s = i;
+		else if (d++ == 0)
+			m = i;
 	}
 
-	p[j] = NULL;
+	p[k] = NULL;
 
 	return (p);
 }
+
