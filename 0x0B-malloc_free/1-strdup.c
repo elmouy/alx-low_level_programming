@@ -9,7 +9,7 @@
 char *_strdup(char *str)
 {
 	char *p;
-	int i, ji = 0;
+	int i, j = 0;
 
 	if (str == NULL)
 		return (NULL);
@@ -27,4 +27,3 @@ char *_strdup(char *str)
 
 	return (p);
 }
-
