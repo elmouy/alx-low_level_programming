@@ -19,7 +19,7 @@ void print_numbers(const char *separator, const unsigned int n, ...)
         {
 		if (va_arg(args, int) == NULL)
 		{
-			 printf("nil");
+			 printf("(nil)");
 		}
 		else
 		{
