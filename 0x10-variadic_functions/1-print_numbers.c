@@ -4,14 +4,14 @@
 
 /**
  * print_numbers - Prints numbers, followed by a new line.
- * @separator: the string to be printed between numbers.
+ * @separator: The string to be printed between numbers.
  * @n: The number of integers passed to the function.
- * @...: A variables.
+ * @...: A variable number of numbers to be printed.
  */
 void print_numbers(const char *separator, const unsigned int n, ...)
 {
 	va_list args;
-	int i;
+	unsigned int i;
 
 	va_start(args, n);
 
