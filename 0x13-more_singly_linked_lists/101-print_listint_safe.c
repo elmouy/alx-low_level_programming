@@ -9,31 +9,33 @@
 size_t print_listint_safe(const listint_t *head)
 {
 	size_t i = 0;
-	const listint_t *slow = head, *fast = head;
+	size_t n;
+	const listint_t *tmp = NULL;
+	const listint_t *node = NULL;
 
-	while (slow && fast && fast->next)
+
+	tmp = head;
+
+	while (tmp)
 	{
-		printf("[%p] %d\n", (void *)slow, slow->n);
+		printf("[%p] %d\n", (void *)tmp, tmp->n);
 		i++;
-		slow = slow->next;
-		fast = fast->next->next;
+		tmp = tmp->next;
+		node = head;
+		n = 0;
 
-		if (slow == fast)
+		while (n < i)
 		{
-			printf("-> [%p] %d\n", (void *)slow, slow->n);
-			int cycle_length = 1;
-
-			slow = slow->next;
-
-			while (slow != fast)
+			if (tmp == node)
 			{
-				cycle_length++;
-				slow = slow->next;
+				printf("-> [%p] %d\n", (void *)tmp, tmp->n);
+				return (i);
 			}
-			printf("Cycle length: %d\n", cycle_length);
-			return (i);
+			node = node->next;
+			n++;
 		}
+		if (!head)
+			exit(98);
 	}
-	printf("No cycle found.\n");
 	return (i);
 }
