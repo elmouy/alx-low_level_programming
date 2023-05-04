@@ -6,18 +6,16 @@
  * @index: index position to change
  * Return: 1 if it worked, -1 if error
  */
+
 int clear_bit(unsigned long int *n, unsigned int index)
 {
-	unsigned long int i;
-	unsigned int j;
+	unsigned long int f, s, i;
 
-	if (index > 64)
+	s = sizeof(*n);
+	f = s * 8;
+	if (index > (f - 1))
 		return (-1);
-	j = index;
-	for (i = 1; j > 0; i *= 2, j--)
-	{
-	if ((*n >> index) & 1)
-		*n -= i;
-	}
+	i = 1 << index;
+	*n = *n & ~i;
 	return (1);
 }
