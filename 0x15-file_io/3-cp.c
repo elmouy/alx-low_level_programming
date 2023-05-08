@@ -23,7 +23,7 @@ int main(int argc, char *argv[])
 		exit(97);
 	}
 	if (argv[1] == NULL)
-		read(argv[1]);
+		f_read(argv[1]);
 
 	f1 = open(argv[1], O_RDONLY);
 	if (f1 == -1)
