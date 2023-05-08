@@ -33,10 +33,10 @@ int main(int argc, char *argv[])
 	if (f2 == -1)
 		f_write(argv[2]);
 
-	r = read(fd1, b, 1024);
+	r = read(f1, b, 1024);
 	if (r == -1)
 		f_read(argv[1]);
-	w = write(f2, bf, r);
+	w = write(f2, b, r);
 	if (w == -1)
 		f_write(argv[2]);
 
