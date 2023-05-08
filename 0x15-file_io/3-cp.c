@@ -1,8 +1,8 @@
 #include "main.h"
 
-void close(int f);
-void write(char *f_to);
-void cant_read(char *f_frm);
+void f_close(int f);
+void f_write(char *f_to);
+void f_cant_read(char *f_frm);
 
 /**
  * main - afunction to cp one file into another
