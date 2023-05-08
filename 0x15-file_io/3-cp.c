@@ -64,7 +64,7 @@ int main(int argc, char *argv[])
  */
 void f_read(char *f_frm)
 {
-	dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", file_from);
+	dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", f_frm);
 	exit(98);
 }
 /**
@@ -73,7 +73,7 @@ void f_read(char *f_frm)
  */
 void f_write(char *f_to)
 {
-	dprintf(STDERR_FILENO, "Error: Can't write to %s\n", file_to);
+	dprintf(STDERR_FILENO, "Error: Can't write to %s\n", f_to);
 	exit(99);
 }
 
@@ -83,6 +83,6 @@ void f_write(char *f_to)
  */
 void f_close(int f)
 {
-	dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fd);
+	dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", f);
 	exit(100);
 }
