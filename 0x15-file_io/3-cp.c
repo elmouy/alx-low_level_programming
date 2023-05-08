@@ -1,8 +1,8 @@
 #include "main.h"
 
-void cant_close(int fd);
-void cant_write(char *file_to);
-void cant_read(char *file_from);
+void close(int f);
+void write(char *f_to);
+void cant_read(char *f_frm);
 
 /**
  * main - afunction to cp one file into another
@@ -13,9 +13,9 @@ void cant_read(char *file_from);
 
 int main(int argc, char *argv[])
 {
-	int fd1, fd2;
-	ssize_t rd, wrt;
-	char *buf[1024];
+	int f1, f2;
+	ssize_t r, w;
+	char *b[1024];
 
 	if (argc != 3)
 	{
@@ -25,63 +25,63 @@ int main(int argc, char *argv[])
 	if (argv[1] == NULL)
 		cant_read(argv[1]);
 
-	fd1 = open(argv[1], O_RDONLY);
-	if (fd1 == -1)
+	f1 = open(argv[1], O_RDONLY);
+	if (f1 == -1)
 		cant_read(argv[1]);
 
-	fd2 = open(argv[2], O_WRONLY | O_CREAT | O_TRUNC, 0664);
-	if (fd2 == -1)
+	f2 = open(argv[2], O_WRONLY | O_CREAT | O_TRUNC, 0664);
+	if (f2 == -1)
 		cant_write(argv[2]);
 
-	rd = read(fd1, buf, 1024);
-	if (rd == -1)
+	r = read(fd1, b, 1024);
+	if (r == -1)
 		cant_read(argv[1]);
-	wrt = write(fd2, buf, rd);
-	if (wrt == -1)
+	w = write(f2, bf, r);
+	if (w == -1)
 		cant_write(argv[2]);
 
-	while (rd == 1024)
+	while (r == 1024)
 	{
-		rd = read(fd1, buf, 1024);
-		if (rd == -1)
+		r = read(f1, b, 1024);
+		if (r == -1)
 			cant_read(argv[1]);
 
-		wrt = write(fd2, buf, rd);
-		if (wrt == -1)
+		w = write(f2, b, r);
+		if (w == -1)
 			cant_write(argv[2]);
 	}
 
-	if (close(fd1) < 0)
-		cant_close(fd1);
-	if (close(fd2) < 0)
-		cant_close(fd2);
+	if (close(f1) < 0)
+		cant_close(f1);
+	if (close(f2) < 0)
+		cant_close(f2);
 
 	return (0);
 }
 /**
- * cant_read - a function to print an error and exit
- * @file_from: a pointer to our originalfile
+ * read - a function to print an error and exit
+ * @f_frm: a pointer to our originalfile
  */
-void cant_read(char *file_from)
+void read(char *f_frm)
 {
 	dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", file_from);
 	exit(98);
 }
 /**
- * cant_write - a function to print an error message and exit
- * @file_to: a pointer to our receiving file
+ * write - a function to print an error message and exit
+ * @f_to: a pointer to our receiving file
  */
-void cant_write(char *file_to)
+void write(char *f_to)
 {
 	dprintf(STDERR_FILENO, "Error: Can't write to %s\n", file_to);
 	exit(99);
 }
 
 /**
- * cant_close - a function to print out an error and exit
- * @fd: our file descriptor
+ * close - a function to print out an error and exit
+ * @f: our file descriptor
  */
-void cant_close(int fd)
+void close(int f)
 {
 	dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fd);
 	exit(100);
